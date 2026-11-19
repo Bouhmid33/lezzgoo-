@@ -7,25 +7,40 @@
 <meta name="theme-color" content="#130e1c">
 <title>One More Chapter? ❤️</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
+<style>
 :root {
   --bg: #130e1c;
   --pink: #f4a9c2;
   --white: #fff7fb;
   --muted: #c0afc7;
 }
-* { box-sizing: border-box; }
-html { min-height: 100%; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100svh;
-  background: radial-gradient(ellipse at 50% 25%, #33213d, var(--bg) 75%);
+  background:
+    radial-gradient(
+      ellipse at 50% 25%,
+      #33213d,
+      var(--bg) 75%
+    );
   color: var(--white);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
+
 main {
   min-height: 100svh;
   display: grid;
@@ -34,12 +49,17 @@ main {
   position: relative;
   z-index: 2;
 }
+
 .screen {
   width: min(100%, 520px);
   text-align: center;
   animation: appear .8s ease both;
 }
-.hidden { display: none !important; }
+
+.hidden {
+  display: none !important;
+}
+
 .eyebrow {
   font-size: 11px;
   letter-spacing: 3px;
@@ -47,21 +67,35 @@ main {
   text-transform: uppercase;
   margin-bottom: 30px;
 }
+
 h1, h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
   line-height: 1.25;
 }
-h1 { font-size: clamp(38px, 8vw, 65px); margin: 0 0 22px; }
-h2 { font-size: clamp(34px, 7vw, 52px); margin: 15px 0 25px; }
-em { color: var(--pink); }
+
+h1 {
+  font-size: clamp(38px, 8vw, 65px);
+  margin: 0 0 22px;
+}
+
+h2 {
+  font-size: clamp(34px, 7vw, 52px);
+  margin: 15px 0 25px;
+}
+
+em {
+  color: var(--pink);
+}
+
 .subtitle {
   color: var(--muted);
   font-size: 15px;
   line-height: 1.9;
   margin: 0 auto 36px;
-  max-width: 360px;
+  max-width: 380px;
 }
+
 .buttons {
   display: flex;
   align-items: center;
@@ -69,41 +103,64 @@ em { color: var(--pink); }
   gap: 18px;
   min-height: 100px;
 }
+
 button, .action {
   border: 0;
   border-radius: 50px;
   padding: 17px 32px;
   font: 600 15px 'DM Sans', sans-serif;
   cursor: pointer;
-  transition: transform .2s, box-shadow .2s;
   text-decoration: none;
   display: inline-block;
 }
+
 .yes, .action {
   background: linear-gradient(135deg, #ffd0df, #eaa0bc);
   color: #2d1427;
   box-shadow: 0 8px 35px #f4a9c230;
+  transition: transform .2s, box-shadow .2s;
 }
+
 .yes:hover, .action:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 45px #f4a9c255;
 }
+
+.yes {
+  position: relative;
+  z-index: 2;
+}
+
 .no {
   color: #eee1ee;
   background: #ffffff12;
   border: 1px solid #ffffff30;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   z-index: 20;
 }
+
+.no.escaping {
+  position: fixed;
+  z-index: 1000;
+  margin: 0;
+  transition: none;
+}
+
 .tiny {
   font-size: 12px;
   color: #b8a6bf;
   margin-top: 25px;
+  min-height: 20px;
 }
+
 .heart {
   font-size: 65px;
   animation: heartbeat 1.5s infinite;
 }
+
 .letter {
   background: #ffffff09;
   border: 1px solid #ffffff1a;
@@ -113,18 +170,65 @@ button, .action {
   text-align: left;
   box-shadow: 0 15px 60px #00000022;
 }
+
 .letter p {
   color: #e9dbe8;
   font-size: 15px;
   line-height: 2;
   white-space: pre-line;
 }
+
 .signature {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   color: var(--pink);
   margin-top: 20px;
 }
+
+/* POLAROID PHOTO */
+
+.memory-photo {
+  width: min(82%, 310px);
+  margin: 35px auto 45px;
+  padding: 12px 12px 8px;
+  background: #fff9f5;
+  border-radius: 3px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  transform: rotate(-4deg);
+  animation: photoReveal 1.4s ease both;
+}
+
+.memory-photo img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 2px;
+}
+
+.memory-photo p {
+  color: #604555;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  margin: 18px 0 12px;
+  text-align: center;
+}
+
+.memory-photo:hover {
+  transform: rotate(0deg) scale(1.04);
+  transition: transform .4s ease;
+}
+
+.photo-error {
+  color: #604555;
+  font-size: 13px;
+  padding: 30px 10px;
+}
+
+/* FLOATING HEARTS */
+
 .floating-heart {
   position: fixed;
   pointer-events: none;
@@ -133,56 +237,145 @@ button, .action {
   opacity: .2;
   animation: floatUp linear forwards;
 }
+
 @keyframes appear {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes heartbeat {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.15); }
 }
+
 @keyframes floatUp {
-  from { transform: translateY(0) rotate(0); opacity: .4; }
-  to { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: .4;
+  }
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
 }
+
+@keyframes photoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px) rotate(-12deg) scale(.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-4deg) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .memory-photo img {
+    height: 250px;
+  }
+
+  .buttons {
+    gap: 12px;
+  }
+
+  button {
+    padding: 16px 25px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <main>
+
   <!-- FIRST SCREEN -->
+
   <section id="question" class="screen">
-    <div class="eyebrow">A LITTLE QUESTION · CHAPTER TWO</div>
-    <h1>Should we give <em>us</em> another chance?</h1>
+    <div class="eyebrow">
+      A LITTLE QUESTION · CHAPTER TWO
+    </div>
+
+    <h1>
+      Should we give <em>us</em> another chance?
+    </h1>
+
     <p class="subtitle">
       I know this is a slightly ridiculous way to ask.
-      But hey, at least I made you a whole website (actions w kadhe hehe)
+      But hey, at least I made you a whole website. 🥹
     </p>
+
     <div class="buttons">
-      <button class="yes" id="yesBtn">Yes ❤️</button>
-      <button class="no" id="noBtn">No 🙃</button>
+      <button class="yes" id="yesBtn" type="button">
+        Yes ❤️
+      </button>
+
+      <button class="no" id="noBtn" type="button">
+        No 🙃
+      </button>
     </div>
-    <p class="tiny" id="tease">Choose wisely. The developer MAY or MAY NOT have feelings.</p>
+
+    <p class="tiny" id="tease">
+      Choose wisely. The developer has feelings.
+    </p>
   </section>
 
   <!-- SURPRISE SCREEN -->
+
   <section id="surprise" class="screen hidden">
     <div class="heart">💗</div>
+
     <h2>Wait... <em>really?</em></h2>
-    <p class="subtitle">You actually said yes? 🥹</p>
+
+    <p class="subtitle">
+      You actually said yes? 🥹
+    </p>
   </section>
 
   <!-- FINAL SCREEN -->
+
   <section id="final" class="screen hidden">
-    <div class="eyebrow">TO OUR NEXT CHAPTER</div>
+
+    <div class="eyebrow">
+      TO OUR NEXT CHAPTER
+    </div>
+
     <div class="heart">💗</div>
-    <h2>Then let's write a <em>better chapter.</em></h2>
+
+    <h2>
+      Then let's write a <em>better chapter.</em>
+    </h2>
+
     <p class="subtitle">
-      Not starting from zero. BUT FRESH LEZZZ GOOOO
+      Not starting from zero.
+      Starting with everything we've learned.
     </p>
+
+    <!-- OUR PHOTO -->
+
+    <div class="memory-photo" id="memoryPhoto">
+      <img
+        src="./photo.jpg"
+        alt="One of our favorite memories together"
+        id="ourPhoto"
+      >
+      <p>Some memories deserve a sequel. ❤️</p>
+    </div>
+
+    <!-- PERSONAL LETTER -->
 
     <div class="letter">
       <div style="font-size:25px">💌</div>
@@ -191,115 +384,336 @@ button, .action {
     </div>
 
     <p class="subtitle">
-      So... coffee, a walk, or just an actual conversation?
+      So... coffee, a walk,
+      or just an actual conversation?
     </p>
-    <a class="action" id="talkBtn" target="_blank"
-       rel="noopener noreferrer">Let's talk ❤️</a>
-    <p class="tiny">No pressure to make everything perfect. Just us, trying.</p>
+
+    <a
+      class="action"
+      id="talkBtn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Let's talk ❤️
+    </a>
+
+    <p class="tiny">
+      No pressure to make everything perfect.
+      Just us, trying.
+    </p>
+
   </section>
+
 </main>
 
 <script>
-// ==========================================
-// PERSONALIZE EVERYTHING HERE
-// ==========================================
-const CONFIG = {
-  herName: "Lili",
 
-  yourName: "Bouhmid",
+/* ========================================
+   PERSONALIZE HERE
+======================================== */
+
+const CONFIG = {
+  herName: "",
+
+  yourName: "Me",
 
   message: `I don't know exactly what our next chapter would look like.
 
-But I know that you are worth making an effort for.
+But I know that some people are worth making an effort for.
 
-I'm not asking us to pretend having everything figured out.
+I'm not asking us to pretend nothing happened, or to have everything figured out.
 
 I'd just like the chance to make some new memories with you.
 
 And maybe, this time, write an even better story. ❤️`,
 
-  // International format, no + or spaces.
-  // Example for France: 33612345678
+  // International format, without + or spaces
   whatsappNumber: "",
 
   whatsappMessage:
     "Okay, so about that second chapter... ❤️"
 };
 
-// ==========================================
-// WEBSITE LOGIC
-// ==========================================
+/* ========================================
+   ELEMENTS
+======================================== */
+
 const question = document.getElementById("question");
 const surprise = document.getElementById("surprise");
 const finalScreen = document.getElementById("final");
+
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const tease = document.getElementById("tease");
 
 let escapes = 0;
 let accepted = false;
+let lastEscape = 0;
+let noPosition = null;
+
+/* ========================================
+   NO BUTTON MECHANISM
+======================================== */
 
 const teasingMessages = [
   "Nice try 😭",
-  "The button has trust issues.",
-  "Not so fast 🏃",
-  "Are you chasing the button? 😂",
-  "Even the code believes in us.",
+  "Not happening 😂",
+  "You're really chasing it?",
+  "The button is faster than you 🏃",
+  "Almost got it!",
   "Okay, this is getting personal 💀",
-  "You are VERY persistent."
+  "Still trying? 🥹"
 ];
+
+function getViewport() {
+  const vv = window.visualViewport;
+
+  return {
+    left: vv ? vv.offsetLeft : 0,
+    top: vv ? vv.offsetTop : 0,
+    width: vv ? vv.width : window.innerWidth,
+    height: vv ? vv.height : window.innerHeight
+  };
+}
+
+function intersects(a, b, padding = 0) {
+  return (
+    a.left < b.right + padding &&
+    a.right > b.left - padding &&
+    a.top < b.bottom + padding &&
+    a.bottom > b.top - padding
+  );
+}
 
 function escapeNo() {
   if (accepted) return;
 
-  const width = noBtn.offsetWidth;
-  const height = noBtn.offsetHeight;
-  const margin = 15;
+  const now = performance.now();
 
-  const maxX = Math.max(margin, innerWidth - width - margin);
-  const maxY = Math.max(margin, innerHeight - height - margin);
+  if (now - lastEscape < 160) return;
+  lastEscape = now;
 
-  const x = margin + Math.random() * Math.max(0, maxX - margin);
-  const y = margin + Math.random() * Math.max(0, maxY - margin);
+  const viewport = getViewport();
+  const margin = 16;
 
-  noBtn.style.position = "fixed";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  noBtn.style.margin = "0";
+  const buttonWidth = noBtn.offsetWidth;
+  const buttonHeight = noBtn.offsetHeight;
+
+  const minX = viewport.left + margin;
+  const minY = viewport.top + margin;
+
+  const maxX = Math.max(
+    minX,
+    viewport.left + viewport.width - buttonWidth - margin
+  );
+
+  const maxY = Math.max(
+    minY,
+    viewport.top + viewport.height - buttonHeight - margin
+  );
+
+  const yesRect = yesBtn.getBoundingClientRect();
+  const currentRect = noBtn.getBoundingClientRect();
+
+  let best = null;
+  let bestScore = -Infinity;
+
+  // Generate positions that remain inside the viewport.
+  // Prefer positions far from YES and the previous location.
+  for (let i = 0; i < 100; i++) {
+    const x = minX + Math.random() * (maxX - minX);
+    const y = minY + Math.random() * (maxY - minY);
+
+    const candidate = {
+      left: x,
+      top: y,
+      right: x + buttonWidth,
+      bottom: y + buttonHeight
+    };
+
+    if (intersects(candidate, yesRect, 35)) {
+      continue;
+    }
+
+    const distanceFromCurrent = Math.hypot(
+      x - currentRect.left,
+      y - currentRect.top
+    );
+
+    const distanceFromYes = Math.hypot(
+      x - yesRect.left,
+      y - yesRect.top
+    );
+
+    const score =
+      distanceFromCurrent +
+      distanceFromYes * 0.25 +
+      Math.random() * 30;
+
+    if (score > bestScore) {
+      bestScore = score;
+      best = { x, y };
+    }
+  }
+
+  if (!best) {
+    // Safe fallback: use whichever viewport corner
+    // is farthest from the YES button.
+    const corners = [
+      { x: minX, y: minY },
+      { x: maxX, y: minY },
+      { x: minX, y: maxY },
+      { x: maxX, y: maxY }
+    ];
+
+    corners.sort((a, b) => {
+      const da = Math.hypot(
+        a.x - yesRect.left,
+        a.y - yesRect.top
+      );
+
+      const db = Math.hypot(
+        b.x - yesRect.left,
+        b.y - yesRect.top
+      );
+
+      return db - da;
+    });
+
+    best = corners[0];
+  }
+
+  noBtn.classList.add("escaping");
+
+  noBtn.style.left = best.x + "px";
+  noBtn.style.top = best.y + "px";
+  noBtn.style.right = "auto";
+  noBtn.style.bottom = "auto";
+  noBtn.style.transform = "none";
+
+  noPosition = best;
 
   tease.textContent =
     teasingMessages[escapes % teasingMessages.length];
+
   escapes++;
 }
 
-noBtn.addEventListener("pointerenter", e => {
-  if (e.pointerType === "mouse" || e.pointerType === "pen") {
+/* DESKTOP */
+
+noBtn.addEventListener("pointerenter", event => {
+  if (
+    event.pointerType === "mouse" ||
+    event.pointerType === "pen"
+  ) {
     escapeNo();
   }
 });
-noBtn.addEventListener("pointerdown", e => {
-  e.preventDefault();
+
+/* MOBILE */
+
+noBtn.addEventListener("touchstart", event => {
+  event.preventDefault();
+  event.stopPropagation();
   escapeNo();
+}, { passive: false });
+
+noBtn.addEventListener("touchend", event => {
+  event.preventDefault();
+  event.stopPropagation();
+}, { passive: false });
+
+noBtn.addEventListener("pointerdown", event => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (event.pointerType !== "touch") {
+    escapeNo();
+  }
 });
-noBtn.addEventListener("click", e => {
-  e.preventDefault();
-  escapeNo();
+
+noBtn.addEventListener("pointerup", event => {
+  event.preventDefault();
+  event.stopPropagation();
 });
-noBtn.addEventListener("focus", escapeNo);
+
+noBtn.addEventListener("click", event => {
+  event.preventDefault();
+  event.stopPropagation();
+});
+
+noBtn.addEventListener("focus", () => {
+  if (!accepted) escapeNo();
+});
+
+/* KEEP BUTTON VISIBLE AFTER ROTATION/RESIZE */
+
+function keepNoVisible() {
+  if (!noPosition || accepted) return;
+
+  const viewport = getViewport();
+  const margin = 16;
+
+  const maxX = Math.max(
+    viewport.left + margin,
+    viewport.left + viewport.width -
+      noBtn.offsetWidth - margin
+  );
+
+  const maxY = Math.max(
+    viewport.top + margin,
+    viewport.top + viewport.height -
+      noBtn.offsetHeight - margin
+  );
+
+  const x = Math.max(
+    viewport.left + margin,
+    Math.min(noPosition.x, maxX)
+  );
+
+  const y = Math.max(
+    viewport.top + margin,
+    Math.min(noPosition.y, maxY)
+  );
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  noPosition = { x, y };
+}
+
+window.addEventListener("resize", keepNoVisible);
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener(
+    "resize",
+    keepNoVisible
+  );
+}
+
+/* ========================================
+   YES EXPERIENCE
+======================================== */
 
 function showScreen(element) {
-  [question, surprise, finalScreen].forEach(s =>
-    s.classList.add("hidden")
-  );
+  [question, surprise, finalScreen].forEach(screen => {
+    screen.classList.add("hidden");
+  });
+
   element.classList.remove("hidden");
+
   element.style.animation = "none";
   void element.offsetWidth;
   element.style.animation = "appear .8s ease both";
 }
 
 yesBtn.addEventListener("click", () => {
+  if (accepted) return;
+
   accepted = true;
+
   noBtn.classList.add("hidden");
+
   showScreen(surprise);
   celebrate();
 
@@ -309,45 +723,106 @@ yesBtn.addEventListener("click", () => {
   }, 2600);
 });
 
-// PERSONAL LETTER
+/* ========================================
+   PERSONAL LETTER
+======================================== */
+
 document.getElementById("letterText").textContent =
-  (CONFIG.herName ? `Hey ${CONFIG.herName},\n\n` : "Hey you,\n\n")
-  + CONFIG.message;
+  (
+    CONFIG.herName
+      ? `Hey ${CONFIG.herName},\n\n`
+      : "Hey you,\n\n"
+  ) + CONFIG.message;
 
 document.getElementById("signature").textContent =
   "With hope, " + CONFIG.yourName;
 
-// WHATSAPP
+/* ========================================
+   WHATSAPP
+======================================== */
+
 const talkBtn = document.getElementById("talkBtn");
-const whatsappUrl =
-  "https://wa.me/" + CONFIG.whatsappNumber +
-  "?text=" + encodeURIComponent(CONFIG.whatsappMessage);
+
+const whatsappText = encodeURIComponent(
+  CONFIG.whatsappMessage
+);
 
 talkBtn.href = CONFIG.whatsappNumber
-  ? whatsappUrl
+  ? "https://wa.me/" +
+    CONFIG.whatsappNumber +
+    "?text=" + whatsappText
   : "https://api.whatsapp.com/send?text=" +
-    encodeURIComponent(CONFIG.whatsappMessage);
+    whatsappText;
 
-// FLOATING HEARTS
+/* ========================================
+   PHOTO LOADING
+======================================== */
+
+const ourPhoto = document.getElementById("ourPhoto");
+
+ourPhoto.addEventListener("error", () => {
+  const errorMessage = document.createElement("div");
+
+  errorMessage.className = "photo-error";
+  errorMessage.textContent =
+    "Our photo couldn't load ❤️";
+
+  ourPhoto.replaceWith(errorMessage);
+});
+
+/* ========================================
+   FLOATING HEARTS
+======================================== */
+
 function makeHeart(big = false) {
   const heart = document.createElement("span");
+
   heart.className = "floating-heart";
-  heart.textContent = ["♥", "♡", "💕", "💗"][Math.floor(Math.random()*4)];
-  heart.style.left = Math.random()*100 + "vw";
+
+  const hearts = ["♥", "♡", "💕", "💗"];
+
+  heart.textContent =
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
   heart.style.bottom = "-50px";
-  heart.style.fontSize = (big ? 22 + Math.random()*35 : 12 + Math.random()*18) + "px";
-  heart.style.animationDuration = (big ? 3 : 7) + Math.random()*5 + "s";
+
+  heart.style.fontSize =
+    (
+      big
+        ? 22 + Math.random() * 35
+        : 12 + Math.random() * 18
+    ) + "px";
+
+  heart.style.animationDuration =
+    (
+      big
+        ? 3 + Math.random() * 5
+        : 7 + Math.random() * 5
+    ) + "s";
+
   document.body.appendChild(heart);
-  heart.addEventListener("animationend", () => heart.remove());
+
+  heart.addEventListener(
+    "animationend",
+    () => heart.remove(),
+    { once: true }
+  );
 }
+
 function celebrate() {
-  for (let i=0; i<35; i++) {
-    setTimeout(() => makeHeart(true), i*55);
+  for (let i = 0; i < 35; i++) {
+    setTimeout(() => makeHeart(true), i * 55);
   }
 }
+
 setInterval(() => {
-  if (!document.hidden) makeHeart();
+  if (!document.hidden) {
+    makeHeart();
+  }
 }, 850);
+
 </script>
+
 </body>
 </html>
